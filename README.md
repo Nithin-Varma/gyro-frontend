@@ -19,11 +19,13 @@ You can either click [`Use this template`](https://github.com/sozonome/vite-reac
 npx degit sozonome/vite-react-chakra-starter <app_name>
 ```
 
-Then, run the development server:
+Then, run the development server :
 
 ```bash
 yarn dev
 ```
+
+## delete this later
 
 ## Deployment
 
