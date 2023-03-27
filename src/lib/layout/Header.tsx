@@ -19,7 +19,7 @@ import {
 } from "@chakra-ui/react";
 import type { ReactNode } from "react";
 
-const Links = ["Dashboard", "Projects", "Team"];
+const Links = ["Home", "How  it  Works", "How  to  Use", "About  Us"];
 
 const NavLink = ({ children }: { children: ReactNode }) => (
   <Link
@@ -40,7 +40,7 @@ export default function Header() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
+    <Box bg={useColorModeValue("#6C0BA9", "#6C0BA9")} px={4}>
       <Flex h={16} alignItems="center" justifyContent="space-between">
         <IconButton
           size="md"
@@ -49,15 +49,24 @@ export default function Header() {
           display={{ md: "none" }}
           onClick={isOpen ? onClose : onOpen}
         />
-        <HStack spacing={8} alignItems="center">
-          <Box>Logo</Box>
-          <HStack as="nav" spacing={4} display={{ base: "none", md: "flex" }}>
-            {Links.map((link) => (
-              <NavLink key={link}>{link}</NavLink>
-            ))}
-          </HStack>
+        {/* <HStack spacing="96" alignItems="center"> */}
+        <Avatar size="md" borderRadius="full" src="/assets/2.png" />
+
+        <HStack
+          as="nav"
+          spacing={6}
+          fontFamily="sans-serif"
+          display={{ base: "none", md: "flex" }}
+        >
+          {Links.map((link) => (
+            <NavLink key={link}>{link}</NavLink>
+          ))}
         </HStack>
-        <Flex alignItems="center">
+        <Button variant="outline" colorScheme="#6C0BA9">
+          Connect to Internet Computer
+        </Button>
+        {/* </HStack> */}
+        {/* <Flex alignItems="center">
           <Menu>
             <MenuButton
               as={Button}
@@ -78,7 +87,7 @@ export default function Header() {
               <MenuItem>Link 3</MenuItem>
             </MenuList>
           </Menu>
-        </Flex>
+        </Flex> */}
       </Flex>
 
       {isOpen ? (
