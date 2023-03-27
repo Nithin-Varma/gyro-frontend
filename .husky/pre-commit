@@ -3,3 +3,4 @@
 
 yarn lint-staged
 yarn type-check:turbo
+npm test

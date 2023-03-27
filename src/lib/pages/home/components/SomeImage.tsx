@@ -1,10 +1,27 @@
-import { Flex, Image } from "@chakra-ui/react";
+import { Flex, Heading, Image, useBreakpointValue, VStack } from "@chakra-ui/react";
 
 const ICON_SIZE = 22;
 
 const SomeImage = () => {
   return (
-    <Flex marginY={4} justifyContent="center" alignItems="center" gridGap={2}>
+    <VStack marginY={8} justifyContent="center" alignItems="center">
+      <VStack marginY={8} 
+              justifyContent="center" 
+              alignItems="center"
+              px={useBreakpointValue({ base: 4, md: 8 })}
+              >
+      <Heading>
+        Why to choose "GYRO"
+      </Heading>
+      <h1>
+        This is an open source cab riding software.This is an open source cab riding software.
+        This is an open source cab riding software.
+        This is an open source cab riding software.
+      </h1>
+      </VStack>
+
+
+    <Flex marginY={8} justifyContent="center" alignItems="center" gridGap={2}>
       <Image
         src="/assets/vite-logo.svg"
         title="vite"
@@ -30,6 +47,7 @@ const SomeImage = () => {
         width={ICON_SIZE}
       />
     </Flex>
+    </VStack>
   );
 };
 
