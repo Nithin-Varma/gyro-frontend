@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import {
   Box,
   Flex,
@@ -16,6 +16,7 @@ import {
   useDisclosure,
   useColorModeValue,
   Stack,
+  useColorMode,
 } from "@chakra-ui/react";
 import type { ReactNode } from "react";
 
@@ -28,7 +29,9 @@ const NavLink = ({ children }: { children: ReactNode }) => (
     rounded="md"
     _hover={{
       textDecoration: "none",
-      bg: useColorModeValue("gray.200", "gray.700"),
+      fontSize: "xl",
+      textShadow: "1px 1px 1px black",
+      // bg: useColorModeValue("gray.200", "gray.700"),
     }}
     href="#"
   >
@@ -38,6 +41,7 @@ const NavLink = ({ children }: { children: ReactNode }) => (
 
 export default function Header() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <Box bg={useColorModeValue("#6C0BA9", "#6C0BA9")} px={4}>
@@ -54,7 +58,8 @@ export default function Header() {
 
         <HStack
           as="nav"
-          spacing={6}
+          spacing={8}
+          fontWeight="bold"
           fontFamily="sans-serif"
           display={{ base: "none", md: "flex" }}
         >
@@ -62,9 +67,14 @@ export default function Header() {
             <NavLink key={link}>{link}</NavLink>
           ))}
         </HStack>
-        <Button variant="outline" colorScheme="#6C0BA9">
-          Connect to Internet Computer
-        </Button>
+        <HStack spacing={8}>
+          <Link onClick={toggleColorMode}>
+            {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+          </Link>
+          <Button variant="outline" colorScheme="#6C0BA9">
+            Connect to Internet Computer
+          </Button>
+        </HStack>
         {/* </HStack> */}
         {/* <Flex alignItems="center">
           <Menu>
