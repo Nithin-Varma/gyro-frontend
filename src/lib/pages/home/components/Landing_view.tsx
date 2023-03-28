@@ -5,19 +5,25 @@ import {
   Text,
   VStack,
   useBreakpointValue,
+  SimpleGrid,
 } from "@chakra-ui/react";
 
 export default function LandingView() {
   return (
     <Flex
-      // w={'100vh'}
-      // h={'100vh'}
-      // height={{base:'50vh', md: '100vh'}}
       backgroundImage="url(/assets/car.png)"
       backgroundSize="100%"
-      height={{ base: "80vh", md: "80vh" }}
+      height={{ base: "60vh", md: "80vh" }}
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
+      _hover={{
+        transform: "scale(0.98)",
+        borderColor: "#6C0BA9",
+        // filter: "blur(20px)",
+        shadow: "2px 4px 5px #6C0BA9, 2px 4px 5px #6C0BA9",
+        boxShadow:
+          "0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)",
+      }}
     >
       <VStack
         w="full"
@@ -53,7 +59,11 @@ export default function LandingView() {
               alignSelf="center"
               fontFamily="sans-serif"
               textShadow="1px 1px 1px black"
-              _hover={{ bg: "black", borderColor: "#6C0BA9" }}
+              _hover={{
+                bg: "black",
+                borderColor: "#6C0BA9",
+                shadow: "2px 4px 5px #6C0BA9, 2px 4px 5px #6C0BA9",
+              }}
             >
               Connect to Internet Computer
             </Button>
