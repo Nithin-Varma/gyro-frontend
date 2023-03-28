@@ -5,8 +5,8 @@ import {
   Text,
   Stack,
   Flex,
-  useBreakpointValue,
   Heading,
+  useBreakpointValue,
   VStack,
   Button,
 } from "@chakra-ui/react";
@@ -17,9 +17,10 @@ interface FeatureProps {
   title: string;
   text: string;
   icon: ReactElement;
+  button: string;
 }
 
-const Feature = ({ title, _button, description, icon }: FeatureProps) => {
+const Feature = ({ title, text, icon, button }: FeatureProps) => {
   return (
     <Stack align="center">
       <Flex
@@ -35,7 +36,13 @@ const Feature = ({ title, _button, description, icon }: FeatureProps) => {
         {icon}
       </Flex>
       <Text fontWeight={600}>{title}</Text>
-      <Text fontSize="small" color="gray">{description}</Text>
+      <Text
+        color="gray.600"
+        px={useBreakpointValue({ base: 4, md: 8 })}
+        align="center"
+      >
+        {text}
+      </Text>
       <Button
         bg="#51087E"
         rounded="full"
@@ -46,9 +53,13 @@ const Feature = ({ title, _button, description, icon }: FeatureProps) => {
         alignSelf="center"
         fontFamily="sans-serif"
         textShadow="1px 1px 1px black"
-        _hover={{ bg: "black", borderColor: "#6C0BA9" }}
+        _hover={{
+          bg: "black",
+          borderColor: "#6C0BA9",
+          shadow: "2px 4px 5px #6C0BA9, 2px 4px 5px #6C0BA9",
+        }}
       >
-        {_button}
+        {button}
       </Button>
     </Stack>
   );
@@ -56,60 +67,57 @@ const Feature = ({ title, _button, description, icon }: FeatureProps) => {
 
 export default function WhyToUse() {
   return (
-    <Box p={4}>
-      <VStack
-        align="center"
-        spacing="24"
-        px={useBreakpointValue({ base: 4, md: 8 })}
-      >
-        <VStack spacing="8">
-          <Text
-            color="whiteAlpha.800"
+    <Box p={10}>
+      <VStack align="center" spacing="14">
+        <VStack>
+          <Heading
+            // color="whiteAlpha.800"
             fontWeight="bold"
-            lineHeight={1.2}
+            lineHeight={2.2}
             align="center"
             fontFamily="sans-serif"
-            textShadow="6px 3px 9px #6C0BA9"
-            fontSize={useBreakpointValue({ base: "2xl", md: "4xl" })}
+            // textShadow="6px 3px 9px #6C0BA9"
+            fontSize={useBreakpointValue({ base: "2xl", md: "3xl" })}
           >
-            Why to Use GYRO
-          </Text>
+            Why to choose GYRO
+          </Heading>
+
           <Text
-            color="whiteAlpha.800"
+            color="gray"
             fontWeight="normal"
-            lineHeight={1.2}
+            lineHeight={2.2}
             align="center"
             fontFamily="sans-serif"
             // textShadow="6px 3px 9px #6C0BA9"
             fontSize={useBreakpointValue({ base: "md", md: "md" })}
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+            nonumy eirmod tempor invidunt ut labore...
           </Text>
         </VStack>
+
         <SimpleGrid
           columns={{ base: 1, md: 3 }}
-          spacing="20"
-          boxSize="7xl"
-          px={useBreakpointValue({ base: 4, md: 8 })}
+          spacing={{ base: 14, md: 10 }}
+          p={10}
         >
           <Feature
             icon={<Icon as={FcAssistant} w={10} h={10} />}
-            title="How it Benefits the Driver"
-            description="Click below to Know more about it"
-            _button="Read More"
+            title="How it Benefits Driver"
+            text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr,"
+            button="Read More"
           />
           <Feature
             icon={<Icon as={FcDonate} w={10} h={10} />}
-            title="How it Benefits the Passenger"
-            description="Click below to Know more about it"
-            _button="Read More"
+            title="How it Benefits Passenger"
+            text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr,"
+            button="Read More"
           />
           <Feature
             icon={<Icon as={FcInTransit} w={10} h={10} />}
-            title="Why to Use"
-            description="Click below to Know more about it"
-            _button="Read More"
+            title="How to use it"
+            text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr,"
+            button="Read More"
           />
         </SimpleGrid>
       </VStack>
