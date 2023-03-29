@@ -10,6 +10,7 @@ import LandingView from "./components/Landing_view.tsx";
 // import CTASection from "./components/Landing_view";
 import OnChain100 from "./components/SomeTextandImage";
 import WhyToUse from "./components/WhyToUse";
+import ChooseOne from "./components/category";
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
       <LandingView />
       <WhyToUse />
       <OnChain100 />
+      <ChooseOne />
       <FAQ />
     </Grid>
   );
