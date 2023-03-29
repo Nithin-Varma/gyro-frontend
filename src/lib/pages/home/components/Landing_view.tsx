@@ -20,9 +20,8 @@ export default function LandingView() {
         transform: "scale(0.98)",
         borderColor: "#6C0BA9",
         // filter: "blur(20px)",
-        shadow: "2px 4px 5px #6C0BA9, 2px 4px 5px #6C0BA9",
-        boxShadow:
-          "0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)",
+        // shadow: "2px 4px 5px #6C0BA9, 2px 4px 5px #6C0BA9",
+        boxShadow: "0px 1px 10px 2px #6C0BA9, 0 4px 4px 2px #6C0BA9",
       }}
     >
       <VStack
@@ -62,7 +61,8 @@ export default function LandingView() {
               _hover={{
                 bg: "black",
                 borderColor: "#6C0BA9",
-                shadow: "2px 4px 5px #6C0BA9, 2px 4px 5px #6C0BA9",
+                // shadow: "2px 4px 5px #6C0BA9, 2px 4px 5px #6C0BA9",
+                boxShadow: "0px 1px 10px 2px #6C0BA9, 0 4px 4px 2px #6C0BA9",
               }}
             >
               Connect to Internet Computer

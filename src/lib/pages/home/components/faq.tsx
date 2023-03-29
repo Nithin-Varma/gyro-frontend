@@ -102,15 +102,13 @@ export default function FAQ() {
           </Text>
         </VStack>
         <Accordion defaultIndex={[0]} allowMultiple>
-          <AccordionItem>
+        <AccordionItem>
             <h2>
               <AccordionButton _expanded={{ bg: "#6C0BA9", color: "white" }}>
-                <HStack spacing={{ base: 48, md: 96 }}>
-                  <Box as="span" flex="1" textAlign="left">
-                    Section 1 title
-                  </Box>
-                  <AccordionIcon />
-                </HStack>
+                <Box as="span" flex="1" textAlign="left">
+                  How it Differ from Existing Sofware.
+                </Box>
+                <AccordionIcon />
               </AccordionButton>
             </h2>
             <AccordionPanel pb={4}>
@@ -125,7 +123,7 @@ export default function FAQ() {
             <h2>
               <AccordionButton _expanded={{ bg: "#6C0BA9", color: "white" }}>
                 <Box as="span" flex="1" textAlign="left">
-                  Section 2 title
+                  Why people choose GYRO instead of existing software
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
