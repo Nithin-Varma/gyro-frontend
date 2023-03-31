@@ -1,22 +1,36 @@
-import type { IconProps, useToast } from "@chakra-ui/react";
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable no-nested-ternary */
 import {
   chakra,
   Box,
   Flex,
-  Stack,
+  // Stack,
   Heading,
-  Text,
+  // Text,
   Container,
   Input,
   Button,
   SimpleGrid,
   Avatar,
-  AvatarGroup,
-  useBreakpointValue,
+  // AvatarGroup,
+  // useBreakpointValue,
   useColorModeValue,
   Icon,
+  useToast,
+  ButtonGroup,
+  FormControl,
+  FormHelperText,
+  FormLabel,
+  GridItem,
+  // IconProps,
+  InputGroup,
+  InputLeftAddon,
+  InputRightElement,
+  Progress,
+  Select,
+  Textarea,
 } from "@chakra-ui/react";
-import { React } from "react";
+import React, { useState } from "react";
 
 import Header from "lib/layout/Header";
 
@@ -60,11 +74,11 @@ interface TestimonialCardProps {
   role: string;
   content: string;
   avatar: string;
-  index: number;
+  // index: number;
 }
 
 function TestimonialCard(props: TestimonialCardProps) {
-  const { name, role, content, avatar, index } = props;
+  const { name, role, content, avatar } = props;
   return (
     <Flex
       boxShadow="lg"
@@ -125,9 +139,271 @@ function TestimonialCard(props: TestimonialCardProps) {
   );
 }
 
-export default function DriverSignup() {
+const Form1 = () => {
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
+  return (
+    <>
+      <Heading w="100%" textAlign="center" fontWeight="normal" mb="2%">
+        User Registration
+      </Heading>
+      <Flex>
+        <FormControl mr="5%">
+          <FormLabel htmlFor="first-name" fontWeight="normal">
+            First name
+          </FormLabel>
+          <Input id="first-name" placeholder="First name" />
+        </FormControl>
+
+        <FormControl>
+          <FormLabel htmlFor="last-name" fontWeight="normal">
+            Last name
+          </FormLabel>
+          <Input id="last-name" placeholder="First name" />
+        </FormControl>
+      </Flex>
+      <FormControl mt="2%">
+        <FormLabel htmlFor="email" fontWeight="normal">
+          Email address
+        </FormLabel>
+        <Input id="email" type="email" />
+        <FormHelperText>We'll never share your email.</FormHelperText>
+      </FormControl>
+
+      <FormControl>
+        <FormLabel htmlFor="password" fontWeight="normal" mt="2%">
+          Password
+        </FormLabel>
+        <InputGroup size="md">
+          <Input
+            pr="4.5rem"
+            type={show ? "text" : "password"}
+            placeholder="Enter password"
+          />
+          <InputRightElement width="4.5rem">
+            <Button h="1.75rem" size="sm" onClick={handleClick}>
+              {show ? "Hide" : "Show"}
+            </Button>
+          </InputRightElement>
+        </InputGroup>
+      </FormControl>
+    </>
+  );
+};
+
+const Form2 = () => {
+  return (
+    <>
+      <Heading w="100%" textAlign="center" fontWeight="normal" mb="2%">
+        User Details
+      </Heading>
+      <FormControl as={GridItem} colSpan={[6, 3]}>
+        <FormLabel
+          htmlFor="country"
+          fontSize="sm"
+          fontWeight="md"
+          color="gray.700"
+          _dark={{
+            color: "gray.50",
+          }}
+        >
+          Country / Region
+        </FormLabel>
+        <Select
+          id="country"
+          name="country"
+          autoComplete="country"
+          placeholder="Select option"
+          focusBorderColor="brand.400"
+          shadow="sm"
+          size="sm"
+          w="full"
+          rounded="md"
+        >
+          <option>United States</option>
+          <option>Canada</option>
+          <option>Mexico</option>
+        </Select>
+      </FormControl>
+
+      <FormControl as={GridItem} colSpan={6}>
+        <FormLabel
+          htmlFor="street_address"
+          fontSize="sm"
+          fontWeight="md"
+          color="gray.700"
+          _dark={{
+            color: "gray.50",
+          }}
+          mt="2%"
+        >
+          Street address
+        </FormLabel>
+        <Input
+          type="text"
+          name="street_address"
+          id="street_address"
+          autoComplete="street-address"
+          focusBorderColor="brand.400"
+          shadow="sm"
+          size="sm"
+          w="full"
+          rounded="md"
+        />
+      </FormControl>
+
+      <FormControl as={GridItem} colSpan={[6, 6, null, 2]}>
+        <FormLabel
+          htmlFor="city"
+          fontSize="sm"
+          fontWeight="md"
+          color="gray.700"
+          _dark={{
+            color: "gray.50",
+          }}
+          mt="2%"
+        >
+          City
+        </FormLabel>
+        <Input
+          type="text"
+          name="city"
+          id="city"
+          autoComplete="city"
+          focusBorderColor="brand.400"
+          shadow="sm"
+          size="sm"
+          w="full"
+          rounded="md"
+        />
+      </FormControl>
+
+      <FormControl as={GridItem} colSpan={[6, 3, null, 2]}>
+        <FormLabel
+          htmlFor="state"
+          fontSize="sm"
+          fontWeight="md"
+          color="gray.700"
+          _dark={{
+            color: "gray.50",
+          }}
+          mt="2%"
+        >
+          State / Province
+        </FormLabel>
+        <Input
+          type="text"
+          name="state"
+          id="state"
+          autoComplete="state"
+          focusBorderColor="brand.400"
+          shadow="sm"
+          size="sm"
+          w="full"
+          rounded="md"
+        />
+      </FormControl>
+
+      <FormControl as={GridItem} colSpan={[6, 3, null, 2]}>
+        <FormLabel
+          htmlFor="postal_code"
+          fontSize="sm"
+          fontWeight="md"
+          color="gray.700"
+          _dark={{
+            color: "gray.50",
+          }}
+          mt="2%"
+        >
+          ZIP / Postal
+        </FormLabel>
+        <Input
+          type="text"
+          name="postal_code"
+          id="postal_code"
+          autoComplete="postal-code"
+          focusBorderColor="brand.400"
+          shadow="sm"
+          size="sm"
+          w="full"
+          rounded="md"
+        />
+      </FormControl>
+    </>
+  );
+};
+
+const Form3 = () => {
+  return (
+    <>
+      <Heading w="100%" textAlign="center" fontWeight="normal">
+        Social Handles
+      </Heading>
+      <SimpleGrid columns={1} spacing={6}>
+        <FormControl as={GridItem} colSpan={[3, 2]}>
+          <FormLabel
+            fontSize="sm"
+            fontWeight="md"
+            color="gray.700"
+            _dark={{
+              color: "gray.50",
+            }}
+          >
+            Website
+          </FormLabel>
+          <InputGroup size="sm">
+            <InputLeftAddon
+              bg="gray.50"
+              _dark={{
+                bg: "gray.800",
+              }}
+              color="gray.500"
+              rounded="md"
+            >
+              http://
+            </InputLeftAddon>
+            <Input
+              type="tel"
+              placeholder="www.example.com"
+              focusBorderColor="brand.400"
+              rounded="md"
+            />
+          </InputGroup>
+        </FormControl>
+
+        <FormControl id="email" mt={1}>
+          <FormLabel
+            fontSize="sm"
+            fontWeight="md"
+            color="gray.700"
+            _dark={{
+              color: "gray.50",
+            }}
+          >
+            About
+          </FormLabel>
+          <Textarea
+            placeholder="you@example.com"
+            rows={3}
+            shadow="sm"
+            focusBorderColor="brand.400"
+            fontSize={{
+              sm: "sm",
+            }}
+          />
+          <FormHelperText>
+            Brief description for your profile. URLs are hyperlinked.
+          </FormHelperText>
+        </FormControl>
+      </SimpleGrid>
+    </>
+  );
+};
+
+export default function DriverSignup() {
+  const toast = useToast();
+  const [step, setStep] = useState(1);
+  const [progress, setProgress] = useState(33.33);
   return (
     <>
       <Header />
@@ -140,6 +416,71 @@ export default function DriverSignup() {
             spacing={{ base: 10, lg: 32 }}
             py={{ base: 10, sm: 20, lg: 32 }}
           >
+            <Box
+              borderWidth="1px"
+              rounded="lg"
+              shadow="1px 1px 3px rgba(0,0,0,0.3)"
+              maxWidth={800}
+              p={6}
+              m="10px auto"
+              as="form"
+            >
+              <Progress hasStripe value={progress} mb="5%" mx="5%" isAnimated />
+              {step === 1 ? <Form1 /> : step === 2 ? <Form2 /> : <Form3 />}
+              <ButtonGroup mt="5%" w="100%">
+                <Flex w="100%" justifyContent="space-between">
+                  <Flex>
+                    <Button
+                      onClick={() => {
+                        setStep(step - 1);
+                        setProgress(progress - 33.33);
+                      }}
+                      isDisabled={step === 1}
+                      colorScheme="teal"
+                      variant="solid"
+                      w="7rem"
+                      mr="5%"
+                    >
+                      Back
+                    </Button>
+                    <Button
+                      w="7rem"
+                      isDisabled={step === 3}
+                      onClick={() => {
+                        setStep(step + 1);
+                        if (step === 3) {
+                          setProgress(100);
+                        } else {
+                          setProgress(progress + 33.33);
+                        }
+                      }}
+                      colorScheme="teal"
+                      variant="outline"
+                    >
+                      Next
+                    </Button>
+                  </Flex>
+                  {step === 3 ? (
+                    <Button
+                      w="7rem"
+                      colorScheme="red"
+                      variant="solid"
+                      onClick={() => {
+                        toast({
+                          title: "Account created.",
+                          description: "We've created your account for you.",
+                          status: "success",
+                          duration: 3000,
+                          isClosable: true,
+                        });
+                      }}
+                    >
+                      Submit
+                    </Button>
+                  ) : null}
+                </Flex>
+              </ButtonGroup>
+            </Box>
             <Flex
               textAlign="center"
               pt={10}
@@ -188,8 +529,8 @@ export default function DriverSignup() {
                 mb={16}
                 mx="auto"
               >
-                {testimonials.map((cardInfo, index) => (
-                  <TestimonialCard {...cardInfo} index={index} />
+                {testimonials.map((cardInfo) => (
+                  <TestimonialCard {...cardInfo} />
                 ))}
               </SimpleGrid>
               <Box>
@@ -295,25 +636,3 @@ export default function DriverSignup() {
     </>
   );
 }
-
-export const Blur = (props: IconProps) => {
-  return (
-    <Icon
-      width={useBreakpointValue({ base: "100%", md: "40vw", lg: "30vw" })}
-      zIndex={useBreakpointValue({ base: -1, md: -1, lg: 0 })}
-      height="560px"
-      viewBox="0 0 528 560"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
-      {/* <circle fill="#6C0BA9" />
-      <circle cx="244" cy="106" r="139" fill="#6C0BA9" />
-      <circle cy="291" r="139" fill="#6C0BA9" />
-      <circle cx="80.5" cy="189.5" r="101.5" fill="#6C0BA9" />
-      <circle cx="190" cy="317.5" r="101.5" fill="#6C0BA9" />
-      <circle cx="90" cy="458.5" r="101.5" fill="#6C0BA9" />
-      <circle cx="90" cy="-0.5" r="101.5" fill="#6C0BA9" /> */}
-    </Icon>
-  );
-};
