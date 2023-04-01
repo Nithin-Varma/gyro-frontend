@@ -4,16 +4,16 @@ import {
   chakra,
   Box,
   Flex,
-  // Stack,
+  Stack,
   Heading,
-  // Text,
+  Text,
   Container,
   Input,
   Button,
   SimpleGrid,
   Avatar,
   // AvatarGroup,
-  // useBreakpointValue,
+  useBreakpointValue,
   useColorModeValue,
   Icon,
   useToast,
@@ -31,8 +31,6 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-
-import Header from "lib/layout/Header";
 
 const testimonials = [
   {
@@ -74,7 +72,6 @@ interface TestimonialCardProps {
   role: string;
   content: string;
   avatar: string;
-  // index: number;
 }
 
 function TestimonialCard(props: TestimonialCardProps) {
@@ -144,34 +141,59 @@ const Form1 = () => {
   const handleClick = () => setShow(!show);
   return (
     <>
-      <Heading w="100%" textAlign="center" fontWeight="normal" mb="2%">
-        User Registration
+      <Heading
+        w="100%"
+        textAlign="center"
+        fontWeight="normal"
+        mb="2%"
+        color="gray.800"
+      >
+        Driver Registration
       </Heading>
       <Flex>
-        <FormControl mr="5%">
-          <FormLabel htmlFor="first-name" fontWeight="normal">
+        <FormControl mr="5%" color="gray.800">
+          <FormLabel htmlFor="first-name" fontWeight="normal" color="gray.800">
             First name
           </FormLabel>
-          <Input id="first-name" placeholder="First name" />
+          <Input
+            id="first-name"
+            placeholder="First name"
+            borderColor="gray.800"
+          />
         </FormControl>
 
-        <FormControl>
-          <FormLabel htmlFor="last-name" fontWeight="normal">
+        <FormControl color="gray.800">
+          <FormLabel htmlFor="last-name" fontWeight="normal" color="gray.800">
             Last name
           </FormLabel>
-          <Input id="last-name" placeholder="First name" />
+          <Input
+            id="last-name"
+            placeholder="First name"
+            borderColor="gray.800"
+          />
         </FormControl>
       </Flex>
-      <FormControl mt="2%">
-        <FormLabel htmlFor="email" fontWeight="normal">
+      <FormControl mt="2%" color="gray.800">
+        <FormLabel htmlFor="email" fontWeight="normal" color="gray.800">
           Email address
         </FormLabel>
-        <Input id="email" type="email" />
-        <FormHelperText>We'll never share your email.</FormHelperText>
+        <Input id="email" type="email" borderColor="gray.800" />
       </FormControl>
 
-      <FormControl>
-        <FormLabel htmlFor="password" fontWeight="normal" mt="2%">
+      <FormControl mt="2%" color="gray.800">
+        <FormLabel htmlFor="mobile" fontWeight="normal" color="gray.800">
+          Phone Number
+        </FormLabel>
+        <Input id="phone" type="number" borderColor="gray.800" />
+      </FormControl>
+
+      <FormControl color="gray.800">
+        <FormLabel
+          htmlFor="password"
+          fontWeight="normal"
+          mt="2%"
+          color="gray.800"
+        >
           Password
         </FormLabel>
         <InputGroup size="md">
@@ -179,6 +201,7 @@ const Form1 = () => {
             pr="4.5rem"
             type={show ? "text" : "password"}
             placeholder="Enter password"
+            borderColor="gray.800"
           />
           <InputRightElement width="4.5rem">
             <Button h="1.75rem" size="sm" onClick={handleClick}>
@@ -194,206 +217,35 @@ const Form1 = () => {
 const Form2 = () => {
   return (
     <>
-      <Heading w="100%" textAlign="center" fontWeight="normal" mb="2%">
-        User Details
-      </Heading>
-      <FormControl as={GridItem} colSpan={[6, 3]}>
-        <FormLabel
-          htmlFor="country"
-          fontSize="sm"
-          fontWeight="md"
-          color="gray.700"
-          _dark={{
-            color: "gray.50",
-          }}
-        >
-          Country / Region
-        </FormLabel>
-        <Select
-          id="country"
-          name="country"
-          autoComplete="country"
-          placeholder="Select option"
-          focusBorderColor="brand.400"
-          shadow="sm"
-          size="sm"
-          w="full"
-          rounded="md"
-        >
-          <option>United States</option>
-          <option>Canada</option>
-          <option>Mexico</option>
-        </Select>
-      </FormControl>
-
-      <FormControl as={GridItem} colSpan={6}>
-        <FormLabel
-          htmlFor="street_address"
-          fontSize="sm"
-          fontWeight="md"
-          color="gray.700"
-          _dark={{
-            color: "gray.50",
-          }}
-          mt="2%"
-        >
-          Street address
-        </FormLabel>
-        <Input
-          type="text"
-          name="street_address"
-          id="street_address"
-          autoComplete="street-address"
-          focusBorderColor="brand.400"
-          shadow="sm"
-          size="sm"
-          w="full"
-          rounded="md"
-        />
-      </FormControl>
-
-      <FormControl as={GridItem} colSpan={[6, 6, null, 2]}>
-        <FormLabel
-          htmlFor="city"
-          fontSize="sm"
-          fontWeight="md"
-          color="gray.700"
-          _dark={{
-            color: "gray.50",
-          }}
-          mt="2%"
-        >
-          City
-        </FormLabel>
-        <Input
-          type="text"
-          name="city"
-          id="city"
-          autoComplete="city"
-          focusBorderColor="brand.400"
-          shadow="sm"
-          size="sm"
-          w="full"
-          rounded="md"
-        />
-      </FormControl>
-
-      <FormControl as={GridItem} colSpan={[6, 3, null, 2]}>
-        <FormLabel
-          htmlFor="state"
-          fontSize="sm"
-          fontWeight="md"
-          color="gray.700"
-          _dark={{
-            color: "gray.50",
-          }}
-          mt="2%"
-        >
-          State / Province
-        </FormLabel>
-        <Input
-          type="text"
-          name="state"
-          id="state"
-          autoComplete="state"
-          focusBorderColor="brand.400"
-          shadow="sm"
-          size="sm"
-          w="full"
-          rounded="md"
-        />
-      </FormControl>
-
-      <FormControl as={GridItem} colSpan={[6, 3, null, 2]}>
-        <FormLabel
-          htmlFor="postal_code"
-          fontSize="sm"
-          fontWeight="md"
-          color="gray.700"
-          _dark={{
-            color: "gray.50",
-          }}
-          mt="2%"
-        >
-          ZIP / Postal
-        </FormLabel>
-        <Input
-          type="text"
-          name="postal_code"
-          id="postal_code"
-          autoComplete="postal-code"
-          focusBorderColor="brand.400"
-          shadow="sm"
-          size="sm"
-          w="full"
-          rounded="md"
-        />
-      </FormControl>
-    </>
-  );
-};
-
-const Form3 = () => {
-  return (
-    <>
-      <Heading w="100%" textAlign="center" fontWeight="normal">
-        Social Handles
+      <Heading w="100%" textAlign="center" fontWeight="normal" color="gray.800">
+        Please Upload Required Documents
       </Heading>
       <SimpleGrid columns={1} spacing={6}>
-        <FormControl as={GridItem} colSpan={[3, 2]}>
-          <FormLabel
-            fontSize="sm"
-            fontWeight="md"
-            color="gray.700"
-            _dark={{
-              color: "gray.50",
-            }}
-          >
-            Website
+        <FormControl color="gray.800" isRequired>
+          <FormLabel htmlFor="license" fontWeight="normal" color="gray.800">
+            Driver License
           </FormLabel>
-          <InputGroup size="sm">
-            <InputLeftAddon
-              bg="gray.50"
-              _dark={{
-                bg: "gray.800",
-              }}
-              color="gray.500"
-              rounded="md"
-            >
-              http://
-            </InputLeftAddon>
-            <Input
-              type="tel"
-              placeholder="www.example.com"
-              focusBorderColor="brand.400"
-              rounded="md"
-            />
-          </InputGroup>
-        </FormControl>
-
-        <FormControl id="email" mt={1}>
-          <FormLabel
-            fontSize="sm"
-            fontWeight="md"
-            color="gray.700"
-            _dark={{
-              color: "gray.50",
-            }}
-          >
-            About
-          </FormLabel>
-          <Textarea
-            placeholder="you@example.com"
-            rows={3}
-            shadow="sm"
-            focusBorderColor="brand.400"
-            fontSize={{
-              sm: "sm",
-            }}
+          <Input
+            id="licence"
+            type="file"
+            placeholder="Driver License"
+            borderColor="gray.800"
           />
-          <FormHelperText>
-            Brief description for your profile. URLs are hyperlinked.
-          </FormHelperText>
+        </FormControl>
+        <FormControl color="gray.800" isRequired>
+          <FormLabel
+            htmlFor="Vehicle Papers"
+            fontWeight="normal"
+            color="gray.800"
+          >
+            Vehicle Document
+          </FormLabel>
+          <Input
+            id="Vehicle Papers"
+            type="file"
+            placeholder="Vehicle Papers"
+            borderColor="gray.800"
+          />
         </FormControl>
       </SimpleGrid>
     </>
@@ -403,123 +255,116 @@ const Form3 = () => {
 export default function DriverSignup() {
   const toast = useToast();
   const [step, setStep] = useState(1);
-  const [progress, setProgress] = useState(33.33);
+  const [progress, setProgress] = useState(50);
   return (
     <>
-      <Header />
       <Box w="100%" h="100%" bgGradient="linear(to-l,  gray.700, #4F0079)">
         <Box position="relative">
           <Container
             as={SimpleGrid}
             maxW="7xl"
             // columns={{ base: 1, md: 2 }}
-            spacing={{ base: 10, lg: 32 }}
-            py={{ base: 10, sm: 20, lg: 32 }}
+            spacing={{ base: 10, lg: 14 }}
+            py={{ base: 10, sm: 10, lg: 10 }}
+            // m={{ base: 10, sm: 10, lg: 10 }}
           >
             <Box
-              borderWidth="1px"
-              rounded="lg"
-              shadow="1px 1px 3px rgba(0,0,0,0.3)"
-              maxWidth={800}
-              p={6}
-              m="10px auto"
-              as="form"
+              bg="gray.50"
+              rounded="xl"
+              p={{ base: 4, sm: 6, md: 8 }}
+              maxW={{ lg: "lg" }}
+              mx={{ base: 10, sm: 14, lg: 96 }}
             >
-              <Progress hasStripe value={progress} mb="5%" mx="5%" isAnimated />
-              {step === 1 ? <Form1 /> : step === 2 ? <Form2 /> : <Form3 />}
-              <ButtonGroup mt="5%" w="100%">
-                <Flex w="100%" justifyContent="space-between">
-                  <Flex>
-                    <Button
-                      onClick={() => {
-                        setStep(step - 1);
-                        setProgress(progress - 33.33);
-                      }}
-                      isDisabled={step === 1}
-                      colorScheme="teal"
-                      variant="solid"
-                      w="7rem"
-                      mr="5%"
-                    >
-                      Back
-                    </Button>
-                    <Button
-                      w="7rem"
-                      isDisabled={step === 3}
-                      onClick={() => {
-                        setStep(step + 1);
-                        if (step === 3) {
-                          setProgress(100);
-                        } else {
-                          setProgress(progress + 33.33);
-                        }
-                      }}
-                      colorScheme="teal"
-                      variant="outline"
-                    >
-                      Next
-                    </Button>
+              <Stack spacing={4}>
+                <Heading
+                  color="gray.800"
+                  lineHeight={1.1}
+                  fontSize={{ base: "xl", sm: "xl", md: "2xl" }}
+                >
+                  One Step Away to Join Our Driver's Community
+                </Heading>
+                <Progress
+                  hasStripe
+                  value={progress}
+                  mb="5%"
+                  mx="5%"
+                  isAnimated
+                />
+                {step === 1 ? <Form1 /> : <Form2 />}
+                <ButtonGroup mt="5%" w="100%">
+                  <Flex w="100%" justifyContent="space-between">
+                    <Flex>
+                      <Button
+                        onClick={() => {
+                          setStep(step - 1);
+                          setProgress(progress - 50);
+                        }}
+                        isDisabled={step === 1}
+                        colorScheme="purple"
+                        variant="solid"
+                        w="7rem"
+                        mr="5%"
+                      >
+                        Back
+                      </Button>
+                      <Button
+                        w="7rem"
+                        isDisabled={step === 2}
+                        onClick={() => {
+                          setStep(step + 1);
+                          if (step === 2) {
+                            setProgress(100);
+                          } else {
+                            setProgress(progress + 50);
+                          }
+                        }}
+                        colorScheme="purple"
+                        variant="solid"
+                      >
+                        Next
+                      </Button>
+                    </Flex>
+                    {step === 2 ? (
+                      <Button
+                        w="7rem"
+                        colorScheme="red"
+                        variant="solid"
+                        onClick={() => {
+                          toast({
+                            title: "Account created.",
+                            description: "We've created your account for you.",
+                            status: "success",
+                            duration: 3000,
+                            isClosable: true,
+                          });
+                        }}
+                      >
+                        Submit
+                      </Button>
+                    ) : null}
                   </Flex>
-                  {step === 3 ? (
-                    <Button
-                      w="7rem"
-                      colorScheme="red"
-                      variant="solid"
-                      onClick={() => {
-                        toast({
-                          title: "Account created.",
-                          description: "We've created your account for you.",
-                          status: "success",
-                          duration: 3000,
-                          isClosable: true,
-                        });
-                      }}
-                    >
-                      Submit
-                    </Button>
-                  ) : null}
-                </Flex>
-              </ButtonGroup>
+                </ButtonGroup>
+              </Stack>
             </Box>
             <Flex
               textAlign="center"
-              pt={10}
+              // pt={10}
               justifyContent="center"
               direction="column"
               width="full"
               overflow="hidden"
             >
-              <Box width={{ base: "full", sm: "lg", lg: "xl" }} margin="auto">
-                <chakra.h3
-                  fontFamily="Work Sans"
-                  fontWeight="bold"
-                  fontSize={20}
-                  textTransform="uppercase"
-                  color="white"
-                >
-                  People love us
-                </chakra.h3>
-                <chakra.h1
-                  py={5}
+              <Box
+                width={{ base: "full", sm: "full", lg: "full" }}
+                // margin="auto"
+              >
+                <chakra.h2
                   fontSize={48}
                   fontFamily="Work Sans"
                   fontWeight="bold"
                   color={useColorModeValue("white", "white")}
                 >
-                  You're in good company
-                </chakra.h1>
-                <chakra.h2
-                  margin="auto"
-                  width="70%"
-                  fontFamily="Inter"
-                  fontWeight="medium"
-                  color={useColorModeValue("white", "white")}
-                >
-                  See why over{" "}
-                  <chakra.strong color={useColorModeValue("white", "white")}>
-                    150,000+
-                  </chakra.strong>{" "}
-                  influencers use EEZY to manage their social media content!
+                  What Drivers talk about GYRO
                 </chakra.h2>
               </Box>
               <SimpleGrid
@@ -547,90 +392,7 @@ export default function DriverSignup() {
                 </Icon>
               </Box>
             </Flex>
-            {/* <Stack
-              bg="gray.50"
-              rounded="xl"
-              p={{ base: 4, sm: 6, md: 8 }}
-              spacing={{ base: 8 }}
-              maxW={{ lg: "lg" }}
-            >
-              <Stack spacing={4}>
-                <Heading
-                  color="gray.800"
-                  lineHeight={1.1}
-                  fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
-                >
-                  Join our team
-                  <Text
-                    as="span"
-                    bgGradient="linear(to-r, red.400,pink.400)"
-                    bgClip="text"
-                  >
-                    !
-                  </Text>
-                </Heading>
-                <Text color="gray.500" fontSize={{ base: "sm", sm: "md" }}>
-                  We’re looking for amazing engineers just like you! Become a
-                  part of our rockstar engineering team and skyrocket your
-                  career!
-                </Text>
-              </Stack>
-              <Box as="form" mt={10}>
-                <Stack spacing={4}>
-                  <Input
-                    placeholder="Firstname"
-                    bg="gray.100"
-                    border={0}
-                    color="gray.500"
-                    _placeholder={{
-                      color: "gray.500",
-                    }}
-                  />
-                  <Input
-                    placeholder="firstname@lastname.io"
-                    bg="gray.100"
-                    border={0}
-                    color="gray.500"
-                    _placeholder={{
-                      color: "gray.500",
-                    }}
-                  />
-                  <Input
-                    placeholder="+1 (___) __-___-___"
-                    bg="gray.100"
-                    border={0}
-                    color="gray.500"
-                    _placeholder={{
-                      color: "gray.500",
-                    }}
-                  />
-                  <Button fontFamily="heading" bg="gray.200" color="gray.800">
-                    Upload CV
-                  </Button>
-                </Stack>
-                <Button
-                  fontFamily="heading"
-                  mt={8}
-                  w="full"
-                  bgGradient="linear(to-r, red.400,pink.400)"
-                  color="white"
-                  _hover={{
-                    bgGradient: "linear(to-r, red.400,pink.400)",
-                    boxShadow: "xl",
-                  }}
-                >
-                  Submit
-                </Button>
-              </Box>
-              form
-            </Stack> */}
           </Container>
-          {/* <Blur
-      position="absolute"
-      top={-10}
-      left={-10}
-      style={{ filter: "blur(70px)" }}
-    /> */}
         </Box>
       </Box>
     </>
